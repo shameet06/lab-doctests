@@ -669,7 +669,7 @@ def largest(xs):
     '''
 
 
-def last_element_list(xs):
+def last_element(xs):
     if len(xs) == 0:
         return None
     else:
@@ -736,7 +736,7 @@ def first_three(xs):
 
 def last_three(xs):
 
-    if len(xs) > 4:
+    if len(xs) >= 4:
         return xs[-3:]
     else:
         return xs
