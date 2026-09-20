@@ -338,7 +338,7 @@ def fibonacci(n):
         fn = f0 + f1
         f0 = f1
         f1 = fn
-        return f0
+    return f0
 
 
     '''
@@ -556,8 +556,7 @@ def funny_sum(a, b, c):
     if b == c:
         b == 0
         c == 0
-    else:
-        return a + b + c
+    return a + b + c
 
     '''
     Return the sum of the input values.
@@ -610,10 +609,7 @@ def median(a, b, c):
 
 
 def sum_between(a, b):
-    sum = 0
-    for i in range(a, b+1):
-        sum = sum + i 
-    return sum
+    return sum(range(a, b + 1))
 
     '''
     Find the sum of all numbers between a and b inclusive.
@@ -690,8 +686,7 @@ def last_element(xs):
 
 
 def last_element_list(xs):
-    l1 = list(xs[-1])
-    return l1
+    return list(xs[-1])
     '''
     Return a list containing only the last element.
 
@@ -711,7 +706,7 @@ def last_element_list(xs):
 
 def first_three(xs):
     if len(xs) > 4:
-        xs = xs[0:4]
+        xs = xs[:4]
         return xs
     else:
         return xs
@@ -739,7 +734,7 @@ def first_three(xs):
 def last_three(xs):
 
     if len(xs) > 4:
-        l1 = list(xs[-1:-4])
+        l1 = list(xs[-4:])
         return l1
     else:
         return xs
@@ -848,7 +843,10 @@ def bigger_than_10(xs):
 
 def second_largest(xs):
     xs.sort()
-    return xs[-2]
+    if len(xs) < 3:
+        return None
+    else:
+        return xs[-2]
     '''
     Return the second largest element in a list.
     If the list has less than 2 elements, return None.
