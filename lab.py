@@ -547,15 +547,14 @@ def love6(a, b):
 
 
 def funny_sum(a, b, c):
-    if a == b:
-        a == 0
-        b == 0
-    if a == c:
-        a == 0
-        c == 0
-    if b == c:
-        b == 0
-        c == 0
+    if a == b == c:
+        return 0
+    elif a == b:
+        return c
+    elif a == c:
+        return b
+    elif b == c:
+        return a
     return a + b + c
 
     '''
@@ -609,7 +608,14 @@ def median(a, b, c):
 
 
 def sum_between(a, b):
-    return sum(range(a, b + 1))
+    total = 0
+    if a > b:
+        for i in range(b, a+1):
+            total += i
+    else: 
+        for i in range (a,b+1):
+            total += i
+    return total
 
     '''
     Find the sum of all numbers between a and b inclusive.
@@ -663,11 +669,11 @@ def largest(xs):
     '''
 
 
-def last_element(xs):
+def last_element_list(xs):
     if len(xs) == 0:
         return None
     else:
-        return(xs[-1])
+        return xs[-1]
     '''
     Return the last element of the input list.
     If the input list has no last element, return None.
@@ -704,12 +710,9 @@ def last_element_list(xs):
     '''
 
 
-def first_three(xs):
-    if len(xs) > 4:
-        xs = xs[:4]
-        return xs
-    else:
-        return xs
+def first_three(xs): 
+    return xs[:3]
+    
     
 
     '''
@@ -734,8 +737,7 @@ def first_three(xs):
 def last_three(xs):
 
     if len(xs) > 4:
-        l1 = list(xs[-4:])
-        return l1
+        return xs[-3:]
     else:
         return xs
     
@@ -843,7 +845,7 @@ def bigger_than_10(xs):
 
 def second_largest(xs):
     xs.sort()
-    if len(xs) < 3:
+    if len(xs) < 2:
         return None
     else:
         return xs[-2]
