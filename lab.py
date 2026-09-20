@@ -135,7 +135,7 @@ def max_num_4(a, b, c, d):
 
 
 def max_num_abs(a, b):
-    if absolute_value(n=a) > absolute_value(n=a):
+    if absolute_value(n=a) > absolute_value(n=b):
         return a
     else:
         return b
@@ -291,11 +291,14 @@ def is_prime(n):
 
 
 def is_perfect_square(n):
-     for i in range (1, n):
-         if i * i-1 == n:
+     if n == 1 or n == 0:
+         return True
+     if n < 0:
+         return False
+     for i in range (0, n):
+         if i * i == n:
              return True
-         else: 
-             return False
+     return False
          
     
 
@@ -335,7 +338,7 @@ def fibonacci(n):
         fn = f0 + f1
         f0 = f1
         f1 = fn
-        return 
+        return f0
 
 
     '''
@@ -390,13 +393,10 @@ def fibonacci(n):
 
 
 def cigar_party(cigars, is_weekend):
-    if is_weekend == True:
-        if cigars >= 40:
+    if is_weekend == True and cigars >= 40:
             return True
-    else:
-        return False
-    if is_weekend == False:
-        if cigars >= 40 and cigars <= 60:
+    
+    elif is_weekend == False and cigars >= 40 and cigars <= 60:
             return True
     else:
         return False
@@ -427,14 +427,14 @@ def speeding_fine(speed, birthday):
         if speed > 65 and speed <= 85:
             return 100
         if speed > 85:
-            return 200 
+            return 2000 
     else:
         if speed <= 60:
             return 0
         if speed > 60 and speed <= 80:
             return 100
         if speed > 80:
-            return 200 
+            return 2000 
 
     '''
     The police department needs a function that computes the size of a fine to give to someone pulled over for speeding,
@@ -472,9 +472,28 @@ def speeding_fine(speed, birthday):
 
 
 def near_ten(x):
-    l1 = list(x)
-    if x[-1] == 1 or  x[-1] == 2 or  x[-1] == 9 or  x[-1] == 8 or  x[-1] == 0:
+    # / 10 = whole number
+    # (x+2 / 10)
+    # (x-2 / 10)
+    y = ((x + 2) / 10)
+    if is_even(n=y) or is_odd(n=y) == True: 
+      return True
+    y = ((x - 2) / 10)
+    if is_even(n=y) or is_odd(n=y) == True:
         return True
+    y = ((x + 1) / 10)
+    if is_even(n=y) or is_odd(n=y) == True: 
+      return True
+    y = ((x - 1) / 10)
+    if is_even(n=y) or is_odd(n=y) == True:
+        return True
+    y = (x/10)
+    if is_even(n=y) or is_odd(n=y) == True:
+        return True
+    else: 
+        return False
+
+
 
     '''
     Return True if num is within 2 of a multiple of 10.
@@ -499,6 +518,8 @@ def near_ten(x):
 def love6(a, b):
     if a == 6 or b == 6 or a+b == 6 or a-b == 6 or b-a == 6:
         return True
+    else:
+        return False
     '''
     The number 6 is a truly great number.
     Return True if:
@@ -535,7 +556,8 @@ def funny_sum(a, b, c):
     if b == c:
         b == 0
         c == 0
-    return a + b + c
+    else:
+        return a + b + c
 
     '''
     Return the sum of the input values.
@@ -590,7 +612,7 @@ def median(a, b, c):
 def sum_between(a, b):
     sum = 0
     for i in range(a, b+1):
-        sum += i 
+        sum = sum + i 
     return sum
 
     '''
@@ -646,8 +668,8 @@ def largest(xs):
 
 
 def last_element(xs):
-    if xs[-1] == False:
-        return "None"
+    if len(xs) == 0:
+        return None
     else:
         return(xs[-1])
     '''
@@ -688,9 +710,9 @@ def last_element_list(xs):
 
 
 def first_three(xs):
-    if len(xs) < 4:
-        l1 = list(xs[0:4])
-        return l1
+    if len(xs) > 4:
+        xs = xs[0:4]
+        return xs
     else:
         return xs
     
@@ -716,7 +738,7 @@ def first_three(xs):
 
 def last_three(xs):
 
-    if len(xs) < 4:
+    if len(xs) > 4:
         l1 = list(xs[-1:-4])
         return l1
     else:
@@ -739,13 +761,8 @@ def last_three(xs):
 
 
 def largest3(xs):
-    large = 0
-    empty_list = []
-    while len(empty_list) < 4:
-        for i in xs:
-            large = max(xs)
-            empty_list = empty_list + [large]
-            xs = xs.remove(large)
+    xs.sort()
+    return xs[-3:]
     '''
     Return the largest 3 elements in a list in sorted order.
 
@@ -830,11 +847,8 @@ def bigger_than_10(xs):
 
 
 def second_largest(xs):
-    if len(xs) < 3:
-        return "None"
-    else:
-        xs = xs.remove(max(xs))
-        return max(xs)
+    xs.sort()
+    return xs[-2]
     '''
     Return the second largest element in a list.
     If the list has less than 2 elements, return None.
@@ -857,6 +871,8 @@ def has_index_at_value(xs):
     for i in range(len(xs)):
         if xs[i] == i:
             return True
+        
+    return False
     '''
     Return True if xs[i] == i for any i.
 
@@ -915,8 +931,7 @@ def flatten(xss):
     l1=[]
     for list in xss:
         for num in list:
-            if num % 2 == 1:
-                l1 = l1 + [num]
+            l1 = l1 + [num]
     return l1
     '''
     Convert a list of lists into a single list that contains the same elements.
