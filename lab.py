@@ -670,10 +670,7 @@ def largest(xs):
 
 
 def last_element(xs):
-    if len(xs) == 0:
-        return None
-    else:
-        return xs[-1]
+    
     '''
     Return the last element of the input list.
     If the input list has no last element, return None.
@@ -689,6 +686,10 @@ def last_element(xs):
     1
     >>> last_element([])
     '''
+    if len(xs) == 0:
+        return None
+    else:
+        return xs[-1]
 
 
 def last_element_list(xs):
