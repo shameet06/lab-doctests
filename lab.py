@@ -22,6 +22,8 @@ you definitely won't be able to do the problems that AI can't solve that we will
 ################################################################################
 
 def is_even(n):
+    return(bool(n % 2 == 0))
+
     '''
     Return True if n is even and False if n is odd.
 
@@ -40,9 +42,11 @@ def is_even(n):
     >>> type(is_even(0))
     <class 'bool'>
     '''
+    
 
 
 def is_odd(n):
+    return(bool(n % 2 == 1))
     '''
     Return True if n is odd and False if n is even.
 
@@ -62,6 +66,10 @@ def is_odd(n):
 
 
 def absolute_value(n):
+    if n < 0:
+        return -(n)
+    else:
+        return(n)
     '''
     Return the absolute value of n.
 
@@ -80,6 +88,10 @@ def absolute_value(n):
 
 
 def max_num(a, b):
+    if a > b:
+        return(a)
+    else:
+        return(b)
     '''
     Return the maximum of a and b.
 
@@ -100,6 +112,16 @@ def max_num(a, b):
 
 
 def max_num_4(a, b, c, d):
+    if a > b and a > c and a > d:
+        return (a)
+    if b > a and b > c and b > d:
+        return(b)
+    if c > a and c > b and c > d:
+        return(c)
+    if d > b and d > c and d > a:
+        return(d)
+                
+    
     '''
     Return the maximum of a, b, c, and d.
 
@@ -120,6 +142,14 @@ def max_num_4(a, b, c, d):
 
 
 def max_num_abs(a, b):
+    if a < 0:
+        a = -(a)
+    if b < 0:
+        b = -(b)
+    if a > b:
+        return(a)
+    else:
+        return(b)
     '''
     Return the number with the highest absolute value.
 
@@ -140,6 +170,11 @@ def max_num_abs(a, b):
 
 
 def is_leap_year(n):
+    if n % 4 == 0 and n % 100 != 0:
+        return True
+    else:
+        return False
+
     '''
     Return True if n is a leap year and False otherwise.
 
@@ -165,6 +200,14 @@ def is_leap_year(n):
 
 
 def num_digits(n):
+    if n < 0:
+        n = -(n)
+    count = 0
+    while n // 10 != 0:
+        n/=10
+        count += 1 
+    return count
+
     '''
     Return the number of digits in the input n.
 
@@ -197,6 +240,11 @@ def num_digits(n):
 
 
 def factorial(n):
+    factorial = 1
+    for i in range (1,n+1):
+        factorial *= i
+    return factorial
+
     '''
     Return the factorial of n.
     Recall that the factorial of n is defined to be: 1*2*3*...*(n-1)*n
@@ -221,6 +269,13 @@ def factorial(n):
 
 
 def is_prime(n):
+    prime = True
+    for i in range (2, n-1):
+        if n  % i == 1:
+            prime = True
+        else:
+            prime = False
+    return prime
     '''
     Return True if n is prime, and False otherwise.
     Recall that a prime number is divisible only by itself and 1,
@@ -245,9 +300,20 @@ def is_prime(n):
 
 
 def is_perfect_square(n):
-    '''
+     for i in range (1, n):
+         if i * i-1 == n:
+             return True
+         else: 
+             return False
+         
+    
+
+'''
     Return True if n is is the product of two integers.
     That is, return True if there exists an integer i such that i*i==n.
+
+    
+
 
     HINT:
     Use a for loop to check each number i between 0 and n.
@@ -268,10 +334,19 @@ def is_perfect_square(n):
     False
     >>> is_perfect_square(144)
     True
-    '''
+'''
 
 
 def fibonacci(n):
+    f0 = 0
+    f1 = 1
+    for i in range (0, n):
+        fn = f0 + f1
+        f0 = f1
+        f1 = fn
+        return 
+
+
     '''
     Return the nth fibonacci number.
     Recall that the fibonacci numbers are calculated by the following formula:
@@ -324,6 +399,17 @@ def fibonacci(n):
 
 
 def cigar_party(cigars, is_weekend):
+    if is_weekend == True:
+        if cigars > 40:
+            return True
+    else:
+        return False
+    if is_weekend == False:
+        if cigars > 40 and cigars < 60:
+            return True
+    else:
+        return False
+
     '''
     When squirrels get together for a party, they like to have cigars.
     A squirrel party is successful when the number of cigars is between 40 and 60, inclusive.
@@ -344,6 +430,21 @@ def cigar_party(cigars, is_weekend):
 
 
 def speeding_fine(speed, birthday):
+    if birthday == True:
+        if speed <= 65:
+            return 0
+        if speed > 65 and speed <= 85:
+            return 100
+        if speed > 85:
+            return 200 
+    else:
+        if speed <= 60:
+            return 0
+        if speed > 60 and speed <= 80:
+            return 100
+        if speed > 80:
+            return 200 
+
     '''
     The police department needs a function that computes the size of a fine to give to someone pulled over for speeding,
     and its your job to translate the law into code to implement this function.
@@ -373,13 +474,17 @@ def speeding_fine(speed, birthday):
     >>> speeding_fine(81, False)
     2000
     >>> speeding_fine(101, True)
-    2000
+    2000do
     >>> speeding_fine(90, False)
     2000
     '''
 
 
 def near_ten(x):
+    l1 = list(x)
+    if x[-1] == 1 or  x[-1] == 2 or  x[-1] == 9 or  x[-1] == 8 or  x[-1] == 0:
+        return True
+
     '''
     Return True if num is within 2 of a multiple of 10.
 
@@ -401,6 +506,8 @@ def near_ten(x):
 
 
 def love6(a, b):
+    if a == 6 or b == 6 or a+b == 6 or a-b == 6 or b-a == 6:
+        return True
     '''
     The number 6 is a truly great number.
     Return True if:
@@ -428,6 +535,17 @@ def love6(a, b):
 
 
 def funny_sum(a, b, c):
+    if a == b:
+        a == 0
+        b == 0
+    if a == c:
+        a == 0
+        c == 0
+    if b == c:
+        b == 0
+        c == 0
+    return a + b + c
+
     '''
     Return the sum of the input values.
     However, if one of the values is the same as another of the values, it does not count towards the sum.
@@ -454,6 +572,12 @@ def funny_sum(a, b, c):
 
 
 def median(a, b, c):
+    if (a <= b <= c) or (c <= b <= a):
+        return b
+    if (b <= a <= c) or (c <= a <= b):
+        return a
+    else:
+        return c
     '''
     Given 3 int values, return the value in the middle.
 
@@ -473,6 +597,11 @@ def median(a, b, c):
 
 
 def sum_between(a, b):
+    sum = 0
+    for i in range(a, b+1):
+        sum += i 
+    return sum
+
     '''
     Find the sum of all numbers between a and b inclusive.
 
@@ -502,6 +631,7 @@ def sum_between(a, b):
 ################################################################################
 
 def largest(xs):
+    return max(xs)
     '''
     Return the largest element in a list.
 
@@ -521,6 +651,10 @@ def largest(xs):
 
 
 def last_element(xs):
+    if xs[-1] == False:
+        return "None"
+    else:
+        return(xs[-1])
     '''
     Return the last element of the input list.
     If the input list has no last element, return None.
@@ -539,6 +673,8 @@ def last_element(xs):
 
 
 def last_element_list(xs):
+    l1 = list(xs[-1])
+    return l1
     '''
     Return a list containing only the last element.
 
@@ -557,6 +693,13 @@ def last_element_list(xs):
 
 
 def first_three(xs):
+    if len(xs) < 4:
+        l1 = list(xs[0:4])
+        return l1
+    else:
+        return xs
+    
+
     '''
     Return a list containing the first three elements of the input list.
     If the list contains three or fewer elements,
@@ -577,6 +720,13 @@ def first_three(xs):
 
 
 def last_three(xs):
+
+    if len(xs) < 4:
+        l1 = list(xs[-1:-4])
+        return l1
+    else:
+        return xs
+    
     '''
     Return a list containing the last three elements of the input list.
     If the list contains three or fewer elements, then return the entire list.
@@ -594,6 +744,13 @@ def last_three(xs):
 
 
 def largest3(xs):
+    large = 0
+    empty_list = []
+    while len(empty_list) < 4:
+        for i in xs:
+            large = max(xs)
+            empty_list = empty_list + [large]
+            xs = xs.remove(large)
     '''
     Return the largest 3 elements in a list in sorted order.
 
@@ -611,6 +768,12 @@ def largest3(xs):
 
 
 def filter_odd(xs):
+    l1 = []
+    for i in xs:
+        if i % 2 == 0:
+            l1 = l1 + [i]
+    return l1
+
     '''
     Return a list with all the odd elements removed.
 
@@ -629,6 +792,11 @@ def filter_odd(xs):
 
 
 def filter_even(xs):
+    l1 = []
+    for i in xs:
+        if i % 2 == 1:
+            l1 = l1 + [i]
+    return l1
     '''
     Return a list with all the even elements removed.
 
@@ -647,6 +815,11 @@ def filter_even(xs):
 
 
 def bigger_than_10(xs):
+    count = 0
+    for i in xs:
+        if i > 10:
+            count += 1
+    return count
     '''
     Return the number of elements in the list bigger than 10
 
@@ -662,6 +835,11 @@ def bigger_than_10(xs):
 
 
 def second_largest(xs):
+    if len(xs) < 3:
+        return "None"
+    else:
+        xs = xs.remove(max(xs))
+        return max(xs)
     '''
     Return the second largest element in a list.
     If the list has less than 2 elements, return None.
@@ -681,6 +859,9 @@ def second_largest(xs):
 
 
 def has_index_at_value(xs):
+    for i in range(len(xs)):
+        if xs[i] == i:
+            return True
     '''
     Return True if xs[i] == i for any i.
 
@@ -714,6 +895,13 @@ def has_index_at_value(xs):
 
 
 def nested_filter_odd(xss):
+    l1=[]
+    for list in xss:
+        for num in list:
+            if num % 2 == 0:
+                l1 = l1 + [num]
+    return l1
+
     '''
     Convert a list of lists into a single list that contains only the even elements.
 
@@ -729,6 +917,12 @@ def nested_filter_odd(xss):
 
 
 def flatten(xss):
+    l1=[]
+    for list in xss:
+        for num in list:
+            if num % 2 == 1:
+                l1 = l1 + [num]
+    return l1
     '''
     Convert a list of lists into a single list that contains the same elements.
 
@@ -744,6 +938,10 @@ def flatten(xss):
 
 
 def filter_flatten(xss):
+    l1=[]
+    for i in range(len(xss)):
+        l1 = l1 + [xss[i][i]]
+    return l1
     '''
     This function takes as input a list of lists and returns a single list.
     The first element of the returned list is equal to the first element in the first nested list,
