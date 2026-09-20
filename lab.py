@@ -112,14 +112,7 @@ def max_num(a, b):
 
 
 def max_num_4(a, b, c, d):
-    if a > b and a > c and a > d:
-        return (a)
-    if b > a and b > c and b > d:
-        return(b)
-    if c > a and c > b and c > d:
-        return(c)
-    if d > b and d > c and d > a:
-        return(d)
+    return max(a,b,c,d)
                 
     
     '''
@@ -142,14 +135,11 @@ def max_num_4(a, b, c, d):
 
 
 def max_num_abs(a, b):
-    if a < 0:
-        a = -(a)
-    if b < 0:
-        b = -(b)
-    if a > b:
-        return(a)
+    if absolute_value(n=a) > absolute_value(n=a):
+        return a
     else:
-        return(b)
+        return b
+
     '''
     Return the number with the highest absolute value.
 
@@ -170,7 +160,7 @@ def max_num_abs(a, b):
 
 
 def is_leap_year(n):
-    if n % 4 == 0 and n % 100 != 0:
+    if (n % 4 == 0 and n % 100 != 0) or (n % 400 == 0):
         return True
     else:
         return False
@@ -200,11 +190,13 @@ def is_leap_year(n):
 
 
 def num_digits(n):
+    if n == 0:
+        return 1
     if n < 0:
         n = -(n)
     count = 0
-    while n // 10 != 0:
-        n/=10
+    while n > 0:
+        n//=10
         count += 1 
     return count
 
@@ -269,13 +261,12 @@ def factorial(n):
 
 
 def is_prime(n):
-    prime = True
-    for i in range (2, n-1):
-        if n  % i == 1:
-            prime = True
-        else:
-            prime = False
-    return prime
+    if n <= 1:
+        return False
+    for i in range (2, n):
+        if n  % i == 0:
+            return False
+    return True
     '''
     Return True if n is prime, and False otherwise.
     Recall that a prime number is divisible only by itself and 1,
@@ -400,12 +391,12 @@ def fibonacci(n):
 
 def cigar_party(cigars, is_weekend):
     if is_weekend == True:
-        if cigars > 40:
+        if cigars >= 40:
             return True
     else:
         return False
     if is_weekend == False:
-        if cigars > 40 and cigars < 60:
+        if cigars >= 40 and cigars <= 60:
             return True
     else:
         return False
@@ -631,7 +622,11 @@ def sum_between(a, b):
 ################################################################################
 
 def largest(xs):
-    return max(xs)
+    if len(xs) > 0:
+        return max(xs)
+    else:
+        return None
+
     '''
     Return the largest element in a list.
 
