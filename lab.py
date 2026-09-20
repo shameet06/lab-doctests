@@ -669,7 +669,7 @@ def largest(xs):
     '''
 
 
-def last_element_list(xs):
+def last_element(xs):
     if len(xs) == 0:
         return None
     else:
@@ -681,13 +681,13 @@ def last_element_list(xs):
     HINT:
     Use negative indexes.
 
-    >>> last_element_list([0,1,2,3,4,5,6,7,8,9])
+    >>> last_element([0,1,2,3,4,5,6,7,8,9])
     9
-    >>> last_element_list(['a','b','c','d'])
+    >>> last_element(['a','b','c','d'])
     'd'
-    >>> last_element_list([0,1])
+    >>> last_element([0,1])
     1
-    >>> last_element_list([])
+    >>> last_element([])
     '''
 
 
