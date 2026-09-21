@@ -693,7 +693,10 @@ def last_element(xs):
 
 
 def last_element_list(xs):
-    return [xs[-1]]
+    if len (xs) == 0:
+        return xs
+    else:
+        return [xs[-1]]
     '''
     Return a list containing only the last element.
 
