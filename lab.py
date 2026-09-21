@@ -693,7 +693,7 @@ def last_element(xs):
 
 
 def last_element_list(xs):
-    return list(xs[-1])
+    return [xs[-1]]
     '''
     Return a list containing only the last element.
 
